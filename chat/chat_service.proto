@@ -8,16 +8,24 @@ message ChatMessage{
     string message = 1;
 }
 
-message PingRequest{
-    string message = 1;
+message LoginRequest {
+    string name = 1;
+    string password = 2;
 }
 
-message PongReply{
-    string message = 1;
+message LoginResponse{
+    string token = 1;
 }
+
+message LogoutRequest {
+    string token = 1;
+}
+
+message LogoutResponse {}
 
 service ChatService{
-    rpc Ping(PingRequest) returns (PongReply) {}
+    rpc Login(LoginRequest) returns (LoginResponse) {}
+    rpc Logout(LogoutRequest) returns (LogoutResponse) {}
     rpc Chat(stream ChatMessage) returns (stream ChatMessage) {}
 }
 
