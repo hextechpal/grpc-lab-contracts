@@ -33,13 +33,25 @@ message DeleteBookRequest{
 }
 
 service BookStore{
-  rpc ListBooks(ListBookRequest) returns (ListBookResponse) {}
+  rpc ListBooks(ListBookRequest) returns (ListBookResponse) {
+    option (google.api.http) = {
+      get: "/api/v1/books"
+    };
+  }
   rpc CreateBook(CreateBookRequest) returns (Book) {
     option (google.api.http) = {
-      post: "/v1/example/echo"
+      post: "/api/v1/books"
       body: "*"
     };
   }
-  rpc GetBook(GetBookRequest) returns (Book) {}
-  rpc DeleteBook(DeleteBookRequest) returns (google.protobuf.Empty) {}
+  rpc GetBook(GetBookRequest) returns (Book) {
+    option (google.api.http) = {
+      post: "/api/v1/books/{id}"
+    };
+  }
+  rpc DeleteBook(DeleteBookRequest) returns (google.protobuf.Empty) {
+    option (google.api.http) = {
+      delete: "/api/v1/books/{id}"
+    };
+  }
 }
