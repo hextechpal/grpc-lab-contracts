@@ -1,0 +1,45 @@
+syntax = "proto3";
+
+package bookstore.api.v1;
+
+option go_package = "github.com/ppal31/contracts/bookstore/api/v1";
+
+import "google/protobuf/empty.proto";
+import "google/api/annotations.proto";
+
+message Book {
+  int64 id = 1;
+  string author = 2;
+  string title = 3;
+}
+
+message ListBookRequest {}
+
+message ListBookResponse {
+  repeated Book books = 1;
+}
+
+message CreateBookRequest{
+  string author = 1;
+  string title = 2;
+}
+
+message GetBookRequest{
+  int64 id = 1;
+}
+
+message DeleteBookRequest{
+  int64 id = 1;
+}
+
+service BookStore{
+  rpc ListBooks(ListBookRequest) returns (ListBookResponse) {}
+  rpc CreateBook(CreateBookRequest) returns (Book) {
+    option (google.api.http) = {
+      post: "/v1/example/echo"
+      body: "*"
+    };
+  }
+  rpc GetBook(GetBookRequest) returns (Book) {}
+  rpc DeleteBook(DeleteBookRequest) returns (google.protobuf.Empty) {}
+}
