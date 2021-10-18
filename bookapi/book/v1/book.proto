@@ -2,7 +2,7 @@ syntax = "proto3";
 
 package book.v1;
 
-option go_package = "github.com/ppal31/contracts/generated/api/books/v1;bookv1";
+option go_package = "github.com/ppal31/contracts/generated/books/v1;bookv1";
 
 import "google/api/annotations.proto";
 
