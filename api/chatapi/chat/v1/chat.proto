@@ -1,8 +1,8 @@
 syntax = "proto3";
 
-package chat;
+package chat.v1;
 
-option go_package = "github.com/ppal31/contracts/chat";
+option go_package = "github.com/ppal31/contracts/generated/api/chatapi/v1;chatv1";
 
 message ChatMessage{
     string message = 1;

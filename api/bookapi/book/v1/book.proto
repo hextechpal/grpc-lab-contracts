@@ -1,10 +1,9 @@
 syntax = "proto3";
 
-package bookstore.api.v1;
+package book.v1;
 
-option go_package = "github.com/ppal31/contracts/bookstore/api/v1";
+option go_package = "github.com/ppal31/contracts/generated/api/books/v1;bookv1";
 
-import "google/protobuf/empty.proto";
 import "google/api/annotations.proto";
 
 message Book {
@@ -13,9 +12,9 @@ message Book {
   string title = 3;
 }
 
-message ListBookRequest {}
+message ListBooksRequest {}
 
-message ListBookResponse {
+message ListBooksResponse {
   repeated Book books = 1;
 }
 
@@ -24,32 +23,45 @@ message CreateBookRequest{
   string title = 2;
 }
 
+message CreateBookResponse{
+  Book book = 1;
+}
+
 message GetBookRequest{
   int64 id = 1;
+}
+
+message GetBookResponse{
+  Book book = 1;
 }
 
 message DeleteBookRequest{
   int64 id = 1;
 }
 
-service BookStore{
-  rpc ListBooks(ListBookRequest) returns (ListBookResponse) {
+message DeleteBookResponse{}
+
+service BookService{
+  rpc ListBooks(ListBooksRequest) returns (ListBooksResponse) {
     option (google.api.http) = {
       get: "/api/v1/books"
     };
   }
-  rpc CreateBook(CreateBookRequest) returns (Book) {
+
+  rpc CreateBook(CreateBookRequest) returns (CreateBookResponse) {
     option (google.api.http) = {
       post: "/api/v1/books"
       body: "*"
     };
   }
-  rpc GetBook(GetBookRequest) returns (Book) {
+
+  rpc GetBook(GetBookRequest) returns (GetBookResponse) {
     option (google.api.http) = {
-      post: "/api/v1/books/{id}"
+      get: "/api/v1/books/{id}"
     };
   }
-  rpc DeleteBook(DeleteBookRequest) returns (google.protobuf.Empty) {
+
+  rpc DeleteBook(DeleteBookRequest) returns (DeleteBookResponse) {
     option (google.api.http) = {
       delete: "/api/v1/books/{id}"
     };
