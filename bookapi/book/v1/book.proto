@@ -7,7 +7,7 @@ option go_package = "github.com/ppal31/contracts/generated/books/v1;bookv1";
 import "google/api/annotations.proto";
 
 message Book {
-  int64 id = 1;
+  string id = 1;
   string author = 2;
   string title = 3;
 }
@@ -28,7 +28,7 @@ message CreateBookResponse{
 }
 
 message GetBookRequest{
-  int64 id = 1;
+  string id = 1;
 }
 
 message GetBookResponse{
@@ -36,7 +36,7 @@ message GetBookResponse{
 }
 
 message DeleteBookRequest{
-  int64 id = 1;
+  string id = 1;
 }
 
 message DeleteBookResponse{}
