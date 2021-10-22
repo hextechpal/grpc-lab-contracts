@@ -5,11 +5,12 @@ package book.v1;
 option go_package = "github.com/ppal31/contracts/generated/books/v1;bookv1";
 
 import "google/api/annotations.proto";
+import "gogoproto/gogo.proto";
 
 message Book {
-  string id = 1;
-  string author = 2;
-  string title = 3;
+  string id = 1 [(gogoproto.moretags) = "bson:\"_id\""];
+  string author = 2 [(gogoproto.moretags) = "bson:\"author\""];
+  string title = 3 [(gogoproto.moretags) = "bson:\"title\""];
 }
 
 message ListBooksRequest {}

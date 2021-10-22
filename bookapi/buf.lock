@@ -2,9 +2,16 @@
 version: v1
 deps:
   - remote: buf.build
+    owner: gogo
+    repository: protobuf
+    branch: main
+    commit: 4df00b267f944190a229ce3695781e99
+    digest: b1-sjLgsg7CzrkOrIjBDh3s-l0aMjE6oqTj85-OsoopKAw=
+    create_time: 2021-08-10T00:14:28.345069Z
+  - remote: buf.build
     owner: googleapis
     repository: googleapis
     branch: main
-    commit: 78eb2570c6594102a1457c34e4ed819b
-    digest: b1-JWDWSzzcxfmot4_qCKvCNG_iQ-2aZB-KhBzhGb0QOM4=
-    create_time: 2021-10-16T15:04:57.951247Z
+    commit: a44a1d3aff964afc800a04e60361df07
+    digest: b1-bdLtaHMzPj1m0zD1VcC_XoXS9pWnOMtH3weh2JK8d9I=
+    create_time: 2021-10-21T15:07:08.889897Z
