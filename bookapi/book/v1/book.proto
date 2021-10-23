@@ -9,10 +9,13 @@ import "gogoproto/gogo.proto";
 
 message Book {
   string id = 1 [(gogoproto.moretags) = "bson:\"_id\""];
-  string author = 2 [(gogoproto.moretags) = "bson:\"author\""];
+  Author author = 2 [(gogoproto.moretags) = "bson:\"author\""];
   string title = 3 [(gogoproto.moretags) = "bson:\"title\""];
 }
 
+message Author {
+  string name = 1;
+}
 message ListBooksRequest {}
 
 message ListBooksResponse {
